@@ -36,7 +36,10 @@ async fn main() -> std::io::Result<()> {
             .route("/videos/{id}/metadata", web::get().to(get_video_metadata))
             .route("/videos/{filename}", web::get().to(stream_video))
     })
-    .bind("127.0.0.1:8080")?
+    .bind("0.0.0.0:8080")? 
+    //http://your_local_ip:8080/videos/1/metadata
+    //http://your_local_ip:8080/videos/example.mp4
+    //.bind("127.0.0.1:8080")? for local testing, use ipconfig to 
     .run()
     .await
 }
